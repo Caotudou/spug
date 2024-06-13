@@ -5,18 +5,20 @@
  */
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
-import { Modal, Form, Input, message } from 'antd';
+import {Modal, Form, Input, message, Radio} from 'antd';
 import http from 'libs/http';
 import store from './store';
 
 export default observer(function () {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [isMini,setIsMini] = useState(0)
 
   function handleSubmit() {
     setLoading(true);
     const formData = form.getFieldsValue();
     formData['id'] = store.record.id;
+    formData['isMini']= isMini
     http.post('/api/app/', formData)
       .then(res => {
         message.success('操作成功');
@@ -24,7 +26,6 @@ export default observer(function () {
         store.fetchRecords()
       }, () => setLoading(false))
   }
-
   return (
     <Modal
       visible
@@ -37,6 +38,12 @@ export default observer(function () {
         <Form.Item required name="name" label="应用名称">
           <Input placeholder="请输入应用名称，例如：订单服务"/>
         </Form.Item>
+        <Form.Item label="是否小程序" required>
+            <Radio.Group value={isMini} onChange={e => setIsMini(e.target.value)}>
+            <Radio.Button value="1">是</Radio.Button>
+            <Radio.Button value="0">否</Radio.Button>
+          </Radio.Group>
+        </Form.Item>
         <Form.Item
           required
           name="key"
@@ -45,9 +52,11 @@ export default observer(function () {
           extra="可以由字母、数字和下划线组成。">
           <Input placeholder="请输入唯一标识符，例如：api_order"/>
         </Form.Item>
+
         <Form.Item name="desc" label="备注信息">
           <Input.TextArea placeholder="请输入备注信息"/>
         </Form.Item>
+
       </Form>
     </Modal>
   )

@@ -36,6 +36,7 @@ class AppView(View):
             Argument('id', type=int, required=False),
             Argument('name', help='请输入服务名称'),
             Argument('key', help='请输入唯一标识符'),
+            Argument('isMini', help='请选择是否是小程序项目',required=False),
             Argument('desc', required=False)
         ).parse(request.body)
         if error is None:

@@ -15,6 +15,7 @@ class App(models.Model, ModelMixin):
     name = models.CharField(max_length=50)
     key = models.CharField(max_length=50, unique=True)
     desc = models.CharField(max_length=255, null=True)
+    is_mini = models.IntegerField(null=False,default=1)
     rel_apps = models.TextField(null=True)
     rel_services = models.TextField(null=True)
     sort_id = models.IntegerField(default=0, db_index=True)

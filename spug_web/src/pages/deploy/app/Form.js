@@ -20,7 +20,6 @@ export default observer(function () {
     setLoading(true);
     const formData = form.getFieldsValue();
     formData['id'] = store.record.id;
-    // formData['is_mini']= isMini
     http.post('/api/app/', formData)
       .then(res => {
         message.success('操作成功');

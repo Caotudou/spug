@@ -12,13 +12,15 @@ import store from './store';
 export default observer(function () {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [isMini,setIsMini] = useState(0)
 
+  function setIsMini(value){
+      store.record.is_mini=value
+  }
   function handleSubmit() {
     setLoading(true);
     const formData = form.getFieldsValue();
     formData['id'] = store.record.id;
-    formData['isMini']= isMini
+    // formData['is_mini']= isMini
     http.post('/api/app/', formData)
       .then(res => {
         message.success('操作成功');
@@ -38,10 +40,10 @@ export default observer(function () {
         <Form.Item required name="name" label="应用名称">
           <Input placeholder="请输入应用名称，例如：订单服务"/>
         </Form.Item>
-        <Form.Item label="是否小程序" required>
-            <Radio.Group value={isMini} onChange={e => setIsMini(e.target.value)}>
-            <Radio.Button value="1">是</Radio.Button>
-            <Radio.Button value="0">否</Radio.Button>
+        <Form.Item label="是否小程序" required name='is_mini'>
+            <Radio.Group value={store.record.is_mini} onChange={e => setIsMini(e.target.value)}>
+            <Radio.Button value={1}>是</Radio.Button>
+            <Radio.Button value={0}>否</Radio.Button>
           </Radio.Group>
         </Form.Item>
         <Form.Item

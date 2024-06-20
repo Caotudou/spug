@@ -151,7 +151,7 @@ function ComTable() {
       <Table.Column title="应用名称" dataIndex="name"/>
       <Table.Column title="标识符" dataIndex="key"/>
       <Table.Column  title="是否是小程序项目" render={(info=>(
-        <div>{info.isMini == 1?'是':'否'}</div>
+        <div>{info.is_mini === 1?'是':'否'}</div>
       ))}/>    
       <Table.Column ellipsis title="描述信息" dataIndex="desc"/>
       {hasPermission('deploy.app.edit|deploy.app.del') && (

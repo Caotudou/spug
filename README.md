@@ -6,11 +6,9 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
 
 </div>
 
-- 官网地址：https://spug.cc
-- 使用文档：https://spug.cc/docs/about-spug/
-- 更新日志：https://spug.cc/docs/change-log/
-- 常见问题：https://spug.cc/docs/faq/
-- 推送助手：https://push.spug.cc
+- 公司官网：https://www.spug.cc
+- 项目官网：https://ops.spug.cc
+- 使用文档：https://ops.spug.cc/docs/about-spug/
 
 ## 演示环境
 
@@ -48,9 +46,9 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
 
 ## 安装
 
-[官方文档](https://spug.cc/docs/install-docker)
+[官方文档](https://ops.spug.cc/docs/install-docker)
 
-更多使用帮助请参考： [使用文档](https://spug.cc/docs/host-manage/)
+更多使用帮助请参考： [使用文档](https://ops.spug.cc/docs/host-manage/)
 
 
 ## 推荐项目
